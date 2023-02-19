@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../static/img/health.ico">
+    <!-- Bootstrap CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+    *{
+    margin:0;
+    padding:0;
+    font-family: 'Josefin Sans', sans-serif;
+    }
+    html,
+    body,
+    header,
+    #intro {
+    height: 100%;
+    }
+    
+    img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    }
+    </style>
+    <title>Kidney Disease Prediction</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Health App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            </li> -->
+            <li class="nav-item active">
+              <a class="nav-link" href="kidney.html">Kidney Disease</a>
+            </li>
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="diabetes.html">Diabetes</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="liver.html">Liver Diease</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="cancer.html">Cancer</a>
+            </li> -->
+          </ul>
+        </div>
+      </nav>
+      <!--Mask-->
+      <div id="intro" class="container-fluid view " style="padding: 2rem 2.5rem;">
+        <h1 class="text-center text-capitalize pt-5">Know your chances of getting a kidney disease in one Click!</h1>
+        <hr class="w-75 mx-auto pt-5">
+        <div class="row mb-5">
+          <div class="col-lg-6 col-md-6 col-12 my-auto">
+            <img src="../static/img/kidney.png" class="float-left">
+          </div>
+          <div class="col-lg-6 col-md-6 col-12" style="padding: 2rem 1.5rem;box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;border-radius: 1.5rem;">
+            <form action="{{ url_for('predict')}}" method="post">
+              <div class="form-group">
+                <!-- TODO : Year to accept only year date picker -->
+                <label for="bp">Blood Pressure (mmHg)</label>
+                <input class="form-control" max="200" min="0" type="number" id="bp" name="Year" required="required" placeholder="Blood Pressure">
+              </div>
+
+              <div class="form-group">
+                <label for="sg">Specific Gravity</label>
+                <input class="form-control" type="number" max="2" min="0" step="any" id="sg" name="sg" required="required" placeholder="Specific Gravity">
+              </div>
+
+              <div class="form-group">
+                <label for="al">Albumin</label>
+                <input class="form-control" type="number" max="7" min="0" step="any" id="al" name="al" required="required" placeholder="Albumin">
+              </div>
+
+              <div class="form-group">
+                <label for="su">Blood Sugar Level (mg/dl)</label>
+                <input class="form-control" type="number" id="su" max="250" min="0" name="su" required="required" placeholder="Blood Sugar Level">
+              </div>
+
+              <div class="form-group">
+                <label for="rbc">Red Blood Cells Count</label>
+                <select class="form-control" type="number" id="rbc" name="rbc" min="-3.8" max="5.9" required="required" placeholder="Red Blood Cells Count">
+                  <option value="1">Abnormal</option>
+                  <option value="0">Normal</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pc">Pus Cell Count</label>
+                <select class="form-control" type="number" id="pc" name="pc" required="required" placeholder="Pus Cell Count">
+                  <option value="1">Abnormal</option>
+                  <option value="0">Normal</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="pcc">Pus Cell Clumps</label>
+                <select class="form-control" type="number" id="pcc" name="pcc" required="required" placeholder="Pus Cell Clumps">
+                  <option value="1">Present</option>
+                  <option value="0">Absent</option>
+                </select>
+              </div>           
+
+              <div class="form-group">
+                <label for="sc">serum creatinine</label>
+                <input class="form-control" max="20" min="0" step = 'any' type="number" id="sc" name="sc" required="required" placeholder="serum creatinine">
+              </div>
+              
+              <button type="submit" class="btn btn-danger">Predict</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--/.Mask-->
+    </header>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
